@@ -3,12 +3,6 @@ stages:
   - name: prepare-env
     exec:
       - $NOTIFY --data-urlencode "status=2" --data-urlencode "current-stage=$STAGE"
-      - git clone -b $FLEXIO_SCRIPTS_BRANCH $FLEXIO_SCRIPTS $WORKSPACE/flexio-ci-scripts && export PATH=$PATH:$WORKSPACE/flexio-ci-scripts/bin
-      - docker pull $CI_TOOLS_IMAGE
-      - mkdir -p $M2
-      - mkdir -p $WORKSPACE/gnupg
-      - $DOCKER gpg --homedir /gnupg --list-keys
-      - $DOCKER_CMD -v $WORKSPACE/gnupg:/gnupg -v $WORKSPACE/secrets/codesigning.asc:/codesigning.asc $CI_TOOLS_IMAGE gpg --homedir /gnupg --batch --import /codesigning.asc
 
   - name: build
     timeout: 16
