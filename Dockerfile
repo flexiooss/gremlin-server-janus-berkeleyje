@@ -13,8 +13,11 @@ RUN apt-get update -y && apt-get install -y zip && \
     unzip -q /var/${SERVER_BASE}.zip -d /var && \
     ln -s /var/${SERVER_BASE} /var/janusgraph
 
-ADD gremlin-server-plain-berkeleyje.yaml /var/janusgraph/conf/gremlin-server
+ADD conf/berkeleyje.properties /var/janusgraph/conf/gremlin-server
+ADD conf/berkeleyje-lucene.properties /var/janusgraph/conf/gremlin-server
+ADD conf/gremlin-server-janus-berkeleyje.yaml /var/janusgraph/conf/gremlin-server
+ADD conf/gremlin-server-janus-berkeleyje-lucene.yaml /var/janusgraph/conf/gremlin-server
 
 WORKDIR /var/janusgraph
 
-CMD ["./bin/gremlin-server.sh", "./conf/gremlin-server/gremlin-server-plain-berkeleyje.yaml"]
+CMD ["./bin/gremlin-server.sh", "/var/janusgraph/conf/gremlin-server/gremlin-server-janus-berkeleyje-lucene.yaml"]
