@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+set -x
 
-VERSION="0.3.1"
+VERSION="0.4.0"
 ARCHIVE="janusgraph-${VERSION}-hadoop2.zip"
 
 sha256sum --check $ARCHIVE.sha256

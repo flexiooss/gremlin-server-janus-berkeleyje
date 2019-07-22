@@ -6,5 +6,5 @@ services:
     build:
       context: .
       args:
-        JANUSGRAPH_VERSION: 0.3.1
-    image: ${DOCKER_NAMESPACE:-localhost:5000}/gremlin-server-janus-berkeleyje:0.3.1-1
+        JANUSGRAPH_VERSION: 0.4.0
+    image: ${DOCKER_NAMESPACE:-localhost:5000}/gremlin-server-janus-berkeleyje:0.4.0
